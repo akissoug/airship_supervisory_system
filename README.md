@@ -213,7 +213,7 @@ See Hardware Deployment Guide
 ## Nodes Documentation
 
 | Node | Description |
-|------|-------------|---------|
+|------|-------------|
 | `power_monitor` | Battery monitoring and RTL trigger | 
 | `fault_detector` | Sensor health monitoring |
 | `mission_supervisor` | Mission execution monitoring |
@@ -257,7 +257,7 @@ See Hardware Deployment Guide
 | `/mavros/rc/in` | `mavros_msgs/RCIn` | fault_detector |
 | `/mavros/extended_state` | `mavros_msgs/ExtendedState` | fault_detector |
 
-See [Topics Reference](docs/TOPICS_REFERENCE.md) for detailed message formats.
+See Topics Reference for detailed message formats.
 
 ## Testing
 
