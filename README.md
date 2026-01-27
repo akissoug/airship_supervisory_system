@@ -212,14 +212,14 @@ See Hardware Deployment Guide
 
 ## Nodes Documentation
 
-| Node | Description | Details |
+| Node | Description |
 |------|-------------|---------|
-| `power_monitor` | Battery monitoring and RTL trigger | [Documentation](docs/nodes/POWER_MONITOR.md) |
-| `fault_detector` | Sensor health monitoring | [Documentation](docs/nodes/FAULT_DETECTOR.md) |
-| `mission_supervisor` | Mission execution monitoring | [Documentation](docs/nodes/MISSION_SUPERVISOR.md) |
-| `energy_manager` | Safe return calculations | [Documentation](docs/nodes/ENERGY_MANAGER.md) |
-| `telemetry_handler` | Data aggregation and logging | [Documentation](docs/nodes/TELEMETRY_HANDLER.md) |
-| `emergency_manager` | Emergency coordination | [Documentation](docs/nodes/EMERGENCY_MANAGER.md) |
+| `power_monitor` | Battery monitoring and RTL trigger | 
+| `fault_detector` | Sensor health monitoring |
+| `mission_supervisor` | Mission execution monitoring |
+| `energy_manager` | Safe return calculations |
+| `telemetry_handler` | Data aggregation and logging |
+| `emergency_manager` | Emergency coordination |
 
 ## Topics Reference
 
