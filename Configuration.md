@@ -221,7 +221,7 @@ power_monitor:
     battery_cells: 4
     cruise_current_estimate: 12.0  # Lower in ground effect
     cruise_speed: 15.0
-    safety_margin: 0.4             # Higher for water ops
+    safety_margin: 0.3            
 
 fault_detector:
   ros__parameters:
