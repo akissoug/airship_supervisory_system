@@ -1,0 +1,118 @@
+# ArduPilot Supervisory System Configuration
+# Designed for fixed-wing aircraft (in our case for WIG craft)
+
+power_monitor:
+  ros__parameters:
+    # Battery thresholds
+    low_battery_warning: 30.0      # Percentage - warning level
+    critical_battery: 20.0         # Percentage - trigger RTL
+    min_voltage_per_cell: 3.5      # Volts - minimum safe voltage
+    battery_cells: 4               # Number of cells 
+    
+    # Current monitoring
+    cruise_current_estimate: 15.0  # Amps - typical cruise current
+    current_averaging_window: 10   # Samples to average
+    
+    # Fixed-wing specific
+    cruise_speed: 18.0             # m/s - cruise airspeed
+    safety_margin: 0.3             # 30% safety margin for return
+    
+    # Timing
+    check_interval: 2.0            # Seconds between checks
+    startup_grace_period: 30.0     # Seconds - ignore alerts at startup
+    
+    # Modes
+    sitl_mode: true                # Set false for real hardware
+    enable_rtl_trigger: true       # Enable automatic RTL on low battery
+
+fault_detector:
+  ros__parameters:
+    # GPS thresholds
+    min_satellites: 8              # Minimum satellites for healthy GPS
+    min_hdop: 2.5                  # Maximum HDOP for healthy GPS
+    gps_timeout: 5.0               # Seconds before GPS timeout alert
+    
+    # IMU thresholds
+    max_vibration: 30.0            # m/s^2 - maximum acceptable vibration
+    imu_timeout: 2.0               # Seconds before IMU timeout
+    
+    # Airspeed (fixed-wing specific)
+    min_airspeed: 12.0             # m/s - stall warning threshold
+    max_airspeed: 35.0             # m/s - overspeed warning
+    airspeed_timeout: 5.0          # Seconds before timeout
+    
+    # General
+    check_interval: 1.0            # Seconds between health checks
+    consecutive_failures: 3        # Failures before fault declared
+    
+    sitl_mode: true
+
+mission_supervisor:
+  ros__parameters:
+    # Mission timeouts
+    mission_timeout: 3600.0        # Seconds - max mission duration (1 hour)
+    waypoint_timeout: 300.0        # Seconds - max time per waypoint
+    
+    # Stuck detection
+    stuck_detection_radius: 50.0   # Meters - movement threshold
+    stuck_detection_time: 60.0     # Seconds - time to detect stuck
+    
+    # Safety
+    min_altitude_for_actions: 20.0 # Meters AGL before taking actions
+    max_mission_retries: 2         # Retry attempts on failure
+    
+    # Timing
+    check_interval: 3.0
+    startup_grace_period: 30.0
+    mission_start_grace: 45.0      # Seconds - grace after mission start
+    
+    sitl_mode: true
+    enable_stuck_detection: true
+
+energy_manager:
+  ros__parameters:
+    # Aircraft performance (fixed-wing)
+    cruise_speed: 18.0             # m/s
+    climb_rate: 3.0                # m/s
+    descent_rate: 2.0              # m/s
+    loiter_radius: 80.0            # Meters - fixed-wing loiter
+    
+    # Energy calculation
+    reserve_percentage: 20.0       # Reserve battery for landing
+    headwind_margin: 5.0           # m/s - assumed headwind
+    
+    # Update rate
+    calculation_interval: 5.0
+    
+    sitl_mode: true
+
+telemetry_handler:
+  ros__parameters:
+    # Logging
+    log_to_file: true
+    log_directory: "/home/user/flight_logs"
+    
+    # Publishing rate
+    telemetry_rate: 1.0            # Hz - aggregated telemetry rate
+    
+    # History
+    position_history_size: 1000    # Points to keep
+    battery_history_size: 500
+    
+    sitl_mode: true
+
+emergency_manager:
+  ros__parameters:
+    # Emergency altitudes
+    emergency_loiter_altitude: 100.0  # Meters AGL
+    emergency_loiter_radius: 150.0    # Meters
+    
+    # Timeouts
+    emergency_timeout: 300.0          # Seconds before escalation
+    max_emergency_retries: 3
+    
+    # Coordination
+    enable_auto_emergency: true
+    command_cooldown: 15.0            # Seconds between commands
+    
+    sitl_mode: true
