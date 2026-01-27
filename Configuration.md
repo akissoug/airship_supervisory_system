@@ -265,7 +265,7 @@ ros2 param set /power_monitor critical_battery 25.0
 ## Important Notes
 
 1. **sitl_mode** - Always set to `false` for real hardware
-2. **Battery cells** - Must match your actual battery configuration
-3. **Airspeed limits** - Calibrate for your specific aircraft
+2. **Battery cells** - Must match the actual battery configuration
+3. **Airspeed limits** - Calibrate for each case
 4. **Grace periods** - Allow time for sensors to initialize
 5. **Timeouts** - Balance between safety and false positives
