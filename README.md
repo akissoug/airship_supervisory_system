@@ -7,7 +7,7 @@
 A comprehensive ROS2-based supervisory system for ArduPilot fixed-wing aircraft, including WIG (Wing-in-Ground effect) craft. This system provides real-time monitoring, fault detection, energy management, and emergency handling capabilities.
 
 
-## 🎯 Features
+## Features
 
 - **Battery & Power Monitoring** - Real-time battery status, voltage per cell monitoring, automatic RTL on low battery
 - **Fault Detection** - GPS, IMU, magnetometer, and airspeed sensor health monitoring
@@ -16,7 +16,7 @@ A comprehensive ROS2-based supervisory system for ArduPilot fixed-wing aircraft,
 - **Telemetry Aggregation** - Centralized data logging and status publishing
 - **Emergency Coordination** - Automated failsafe responses and emergency handling
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [System Architecture](#system-architecture)
 - [Prerequisites](#prerequisites)
@@ -30,30 +30,30 @@ A comprehensive ROS2-based supervisory system for ArduPilot fixed-wing aircraft,
 - [Contributing](#contributing)
 - [License](#license)
 
-## 🏗️ System Architecture
+## System Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                        SUPERVISORY SYSTEM                                │
+│                        SUPERVISORY SYSTEM                               │
 ├─────────────────────────────────────────────────────────────────────────┤
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐    │
-│  │   Power     │  │   Fault     │  │  Mission    │  │   Energy    │    │
-│  │  Monitor    │  │  Detector   │  │ Supervisor  │  │  Manager    │    │
-│  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘    │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐     │
+│  │   Power     │  │   Fault     │  │  Mission    │  │   Energy    │     │
+│  │  Monitor    │  │  Detector   │  │ Supervisor  │  │  Manager    │     │
+│  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘     │
 │         │                │                │                │            │
-│  ┌──────┴────────────────┴────────────────┴────────────────┴──────┐    │
+│  ┌──────┴────────────────┴────────────────┴────────────────┴──────┐     │
 │  │                    Telemetry Handler                            │    │
 │  └─────────────────────────────┬───────────────────────────────────┘    │
-│                                │                                         │
+│                                │                                        │
 │  ┌─────────────────────────────┴───────────────────────────────────┐    │
-│  │                    Emergency Manager                             │    │
-│  └──────────────────────────────────────────────────────────────────┘    │
+│  │                    Emergency Manager                             │   │
+│  └──────────────────────────────────────────────────────────────────┘   │
 └─────────────────────────────────────────────────────────────────────────┘
                                  │
                                  ▼
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                           MAVROS2                                        │
-│  Subscribed: /mavros/state, /mavros/battery, /mavros/global_position/*  │
+│                           MAVROS2                                       │
+│  Subscribed: /mavros/state, /mavros/battery, etc...                     │
 │  Services: /mavros/set_mode, /mavros/cmd/arming                         │
 └─────────────────────────────────────────────────────────────────────────┘
                                  │
@@ -66,7 +66,7 @@ A comprehensive ROS2-based supervisory system for ArduPilot fixed-wing aircraft,
            └───────────────┘         └───────────────┘
 ```
 
-## 📦 Prerequisites
+## Prerequisites
 
 ### Software Requirements
 
@@ -85,7 +85,7 @@ A comprehensive ROS2-based supervisory system for ArduPilot fixed-wing aircraft,
 - Telemetry radio (for field operations)
 - RC transmitter with manual override capability
 
-## 🚀 Installation
+## Installation
 
 ### Step 1: Install ROS2 Humble
 
@@ -166,7 +166,7 @@ power_monitor:
 
 See [Configuration Guide](docs/CONFIGURATION.md) for detailed parameter descriptions.
 
-## 🎮 Usage
+## Usage
 
 ### With SITL Simulation
 
@@ -210,7 +210,7 @@ ros2 run ardupilot_supervisory power_monitor
 
 See [Hardware Deployment Guide](docs/HARDWARE_DEPLOYMENT.md).
 
-## 📚 Nodes Documentation
+## Nodes Documentation
 
 | Node | Description | Details |
 |------|-------------|---------|
@@ -221,7 +221,7 @@ See [Hardware Deployment Guide](docs/HARDWARE_DEPLOYMENT.md).
 | `telemetry_handler` | Data aggregation and logging | [Documentation](docs/nodes/TELEMETRY_HANDLER.md) |
 | `emergency_manager` | Emergency coordination | [Documentation](docs/nodes/EMERGENCY_MANAGER.md) |
 
-## 📡 Topics Reference
+## Topics Reference
 
 ### Published Topics (Supervisory System)
 
@@ -259,7 +259,7 @@ See [Hardware Deployment Guide](docs/HARDWARE_DEPLOYMENT.md).
 
 See [Topics Reference](docs/TOPICS_REFERENCE.md) for detailed message formats.
 
-## 🧪 Testing
+## Testing
 
 ### SITL Testing Scenarios
 
@@ -277,7 +277,7 @@ python3 src/ardupilot_supervisory/tests/test_mission_execution.py
 
 See [Testing Guide](docs/TESTING.md) for detailed test procedures and video recordings.
 
-## 🔧 Hardware Deployment
+## Hardware Deployment
 
 ### Connection Options
 
@@ -296,25 +296,13 @@ See [Testing Guide](docs/TESTING.md) for detailed test procedures and video reco
 
 See [Hardware Deployment Guide](docs/HARDWARE_DEPLOYMENT.md).
 
-## 🤝 Contributing
-
-Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## 📄 License
 
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - [ArduPilot](https://ardupilot.org/) - Open source autopilot
 - [MAVROS](https://github.com/mavlink/mavros) - ROS/ROS2 MAVLink interface
 - [ROS2](https://ros.org/) - Robot Operating System
-
-## 📞 Support
-
-- **Issues**: [GitHub Issues](https://github.com/YOUR_USERNAME/ardupilot_ros2_supervisory/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/YOUR_USERNAME/ardupilot_ros2_supervisory/discussions)
-
----
-
-**⭐ Star this repository if it helps your project!**
