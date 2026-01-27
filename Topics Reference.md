@@ -457,3 +457,7 @@ ros2 topic info /supervisory/power_status -v
 # Record all supervisory topics
 ros2 bag record /supervisory/power_status /supervisory/fault_status /supervisory/mission_status -o flight_log
 ```
+OR 
+```bash
+timeout -s SIGINT 180 ros2 bag record -a   -o airship_data_$(date +%F_%H-%M-%S)
+```
