@@ -80,7 +80,7 @@ A comprehensive ROS2-based supervisory system for ArduPilot fixed-wing aircraft,
 
 ### Hardware Requirements (for real deployment)
 
-- Pixhawk-compatible flight controller (Pixhawk 4, Cube Orange, etc.)
+- Pixhawk-compatible flight controller (in our case Pixhahk 6X)
 - USB cable for bench testing
 - Telemetry radio (for field operations)
 - RC transmitter with manual override capability
