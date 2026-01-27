@@ -126,10 +126,10 @@ emergency_manager:
 ```
 
 ## Configuration Profiles
-
+(according to leterature research)
 ### SITL Testing Profile
 ```yaml
-# For simulation testing - relaxed thresholds
+# For simulation testing real flight scenarios
 power_monitor:
   ros__parameters:
     sitl_mode: true
@@ -139,7 +139,7 @@ power_monitor:
 fault_detector:
   ros__parameters:
     sitl_mode: true
-    min_satellites: 6              # SITL may report fewer
+    min_satellites: 6              
     consecutive_failures: 5        # More tolerant
 
 mission_supervisor:
@@ -171,7 +171,7 @@ mission_supervisor:
     enable_stuck_detection: true
 ```
 
-### Small Trainer Aircraft
+### Small prototype case
 ```yaml
 power_monitor:
   ros__parameters:
@@ -190,7 +190,7 @@ energy_manager:
     loiter_radius: 50.0            # Tighter turns
 ```
 
-### Large Survey Aircraft
+### Large prorotype example
 ```yaml
 power_monitor:
   ros__parameters:
