@@ -208,7 +208,7 @@ ros2 run ardupilot_supervisory power_monitor
 
 ### With Real Hardware
 
-See [Hardware Deployment Guide](docs/HARDWARE_DEPLOYMENT.md).
+See Hardware Deployment Guide
 
 ## Nodes Documentation
 
