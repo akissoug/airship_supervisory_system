@@ -6,7 +6,6 @@
 
 A comprehensive ROS2-based supervisory system for ArduPilot fixed-wing aircraft, including WIG (Wing-in-Ground effect) craft. This system provides real-time monitoring, fault detection, energy management, and emergency handling capabilities.
 
-![System Architecture](docs/images/architecture.png)
 
 ## 🎯 Features
 
