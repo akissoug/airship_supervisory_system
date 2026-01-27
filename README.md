@@ -164,7 +164,7 @@ power_monitor:
     sitl_mode: true              # Set false for real hardware
 ```
 
-See [Configuration Guide](docs/CONFIGURATION.md) for detailed parameter descriptions.
+See Configuration Guide for detailed parameter descriptions.
 
 ## Usage
 
