@@ -149,7 +149,7 @@ colcon build --packages-select ardupilot_supervisory
 source install/setup.bash
 ```
 
-## ⚙️ Configuration
+## Configuration
 
 ### Main Configuration File
 
