@@ -275,7 +275,7 @@ python3 src/ardupilot_supervisory/tests/test_gps_loss.py
 python3 src/ardupilot_supervisory/tests/test_mission_execution.py
 ```
 
-See [Testing Guide](docs/TESTING.md) for detailed test procedures and video recordings.
+See Testing Guide for detailed test procedures and video recordings.
 
 ## Hardware Deployment
 
@@ -291,10 +291,9 @@ See [Testing Guide](docs/TESTING.md) for detailed test procedures and video reco
 - [ ] Remove propellers for bench testing
 - [ ] Set `sitl_mode: false` in configuration
 - [ ] Verify RC transmitter override works
-- [ ] Test RTL with RC first
 - [ ] Have manual override ready at all times
 
-See [Hardware Deployment Guide](docs/HARDWARE_DEPLOYMENT.md).
+See Hardware Deployment Guide
 
 
 ## 📄 License
