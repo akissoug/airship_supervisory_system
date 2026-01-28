@@ -194,23 +194,63 @@ class FaultDetector(Node):
             else:
                 self.sensors['imu']['healthy'] = True
     
-    # To check it again 
+    ## To check it again 
+    #def mag_callback(self, msg: MagneticField):
+     #   """Process magnetometer data"""
+      #  with self.lock:
+       #     self.sensors['mag']['last_update'] = time.time()
+      #      self.sensors['mag']['data'] = msg
+            
+        #    # Check for valid magnetic field readings
+        #    field = msg.magnetic_field
+        #    magnitude = math.sqrt(field.x**2 + field.y**2 + field.z**2)
+            
+        #   # Typical Earth's field: 25-65 μT
+         #   if 20e-6 < magnitude < 70e-6:
+         #       self.sensors['mag']['healthy'] = True
+         #       self.sensors['mag']['failures'] = 0
+         #   else:
+          #      self.sensors['mag']['healthy'] = False
+    
     def mag_callback(self, msg: MagneticField):
-        """Process magnetometer data"""
         with self.lock:
             self.sensors['mag']['last_update'] = time.time()
             self.sensors['mag']['data'] = msg
-            
-            # Check for valid magnetic field readings
-            field = msg.magnetic_field
-            magnitude = math.sqrt(field.x**2 + field.y**2 + field.z**2)
-            
-            # Typical Earth's field: 25-65 μT
-            if 20e-6 < magnitude < 70e-6:
+
+            f = msg.magnetic_field
+            mag = math.sqrt(f.x**2 + f.y**2 + f.z**2)
+  
+            # Maintain a small history of magnitudes
+            if not hasattr(self, "mag_history"):
+                self.mag_history = deque(maxlen=30)
+            self.mag_history.append(mag)
+
+            # SITL: only require that data exists
+            if self.sitl_mode:
                 self.sensors['mag']['healthy'] = True
                 self.sensors['mag']['failures'] = 0
-            else:
+                return
+
+            # Hardware health logic:
+            # 1) If we don't have enough samples yet, don't fail it
+            if len(self.mag_history) < 10:
+                self.sensors['mag']['healthy'] = True
+                return
+
+            # 2) Detect "stuck" sensor (magnitude nearly constant)
+            span = max(self.mag_history) - min(self.mag_history)
+            if span < 1.0:  # threshold in *your raw units*
                 self.sensors['mag']['healthy'] = False
+                return
+
+            # 3) Detect sudden unrealistic jump (tune threshold)
+            prev = list(self.mag_history)[-2]
+            if abs(mag - prev) > 200000.0:  # jump threshold in raw units
+                self.sensors['mag']['healthy'] = False
+                return
+
+            self.sensors['mag']['healthy'] = True
+            self.sensors['mag']['failures'] = 0
     
     def state_callback(self, msg: State):
         """Process vehicle state"""
